@@ -486,11 +486,968 @@ class UserItemView @JvmOverloads constructor(
 ```
 
 ### 3) 设计与分层练习（匹配考核点）
-- 问题拆解：拿到需求先列数据源、状态、边界条件（加载/空/错误）、缓存与刷新策略。
-- 分层建议：UI(Compose/Activity/Fragment) -> ViewModel -> UseCase/Repository -> DataSource(Remote/Local)。清晰接口定义，易于替换/mock。
-- 状态管理：为列表或详情定义 `sealed class UiState`（Loading/Success/Error/Empty）；使用 LiveData/StateFlow 驱动 UI。
-- 错误处理：网络错误分类（超时、无网、业务错误），对应到 UI 的提示与重试按钮，结合 `FullScreenView`。
-- 并发与取消：使用 `viewModelScope`/`lifecycleScope`，合理选择 `Dispatchers`（IO/Default/Main），注意生命周期取消。
+
+#### 3.1 问题拆解：需求分析与状态设计
+
+**示例：实现一个支付列表功能，展示完整的问题拆解思路**
+
+```kotlin
+// 步骤1：需求分析清单
+/*
+需求：显示用户的支付历史列表
+
+数据源：
+  - 远程：GET /api/payments?page=1&status=all
+  - 本地：Room 数据库缓存
+
+状态定义：
+  - Loading：首次加载、下拉刷新
+  - Success：加载成功，显示列表
+  - Empty：列表为空
+  - Error：网络错误、业务错误
+
+边界条件：
+  - 网络断开：显示错误，提供重试
+  - 空列表：显示空状态提示
+  - 分页加载：第一页、加载更多、刷新
+  - 数据过期：本地缓存 + 网络刷新策略
+
+交互流程：
+  1. 进入页面 -> Loading -> 先显示本地缓存（如有）-> 请求网络 -> 更新UI
+  2. 下拉刷新 -> Loading -> 请求网络 -> 更新UI
+  3. 加载更多 -> 追加到列表
+  4. 点击重试 -> 重新请求
+*/
+
+// 步骤2：定义完整的状态模型
+sealed interface UiState<out T> {
+    data object Loading : UiState<Nothing>
+    data class Success<T>(val data: T) : UiState<T>
+    data class Error(
+        val message: String,
+        val errorType: ErrorType,
+        val retryable: Boolean = true
+    ) : UiState<Nothing>
+    data object Empty : UiState<Nothing>
+}
+
+enum class ErrorType {
+    NETWORK_ERROR,      // 网络连接失败
+    TIMEOUT,            // 请求超时
+    SERVER_ERROR,       // 服务器错误（5xx）
+    CLIENT_ERROR,       // 客户端错误（4xx）
+    UNKNOWN_ERROR       // 未知错误
+}
+
+// 步骤3：定义业务数据模型
+data class Payment(
+    val id: String,
+    val amount: Double,
+    val currency: String,
+    val status: PaymentStatus,
+    val createdAt: Long,
+    val merchantName: String
+)
+
+enum class PaymentStatus {
+    PENDING, SUCCESS, FAILED, CANCELLED
+}
+
+// 步骤4：定义分页数据模型
+data class PagedData<T>(
+    val items: List<T>,
+    val currentPage: Int,
+    val hasMore: Boolean,
+    val totalCount: Int? = null
+)
+```
+
+---
+
+#### 3.2 分层架构：清晰的职责分离
+
+**示例：完整的四层架构实现（UI -> ViewModel -> UseCase -> Repository -> DataSource）**
+
+```kotlin
+// ========== 第1层：DataSource（数据源层）==========
+// 职责：直接与网络/数据库交互，返回原始数据
+
+// 远程数据源
+interface PaymentRemoteDataSource {
+    suspend fun getPayments(page: Int, status: String?): Result<List<PaymentDto>>
+    suspend fun getPaymentById(id: String): Result<PaymentDto>
+}
+
+class PaymentRemoteDataSourceImpl(
+    private val api: PaymentApi,
+    private val dispatchers: CoroutineDispatcherProvider
+) : PaymentRemoteDataSource {
+    override suspend fun getPayments(page: Int, status: String?): Result<List<PaymentDto>> =
+        withContext(dispatchers.io) {
+            runCatching { api.listPayments(page, status) }
+        }
+    
+    override suspend fun getPaymentById(id: String): Result<PaymentDto> =
+        withContext(dispatchers.io) {
+            runCatching { api.getPayment(id) }
+        }
+}
+
+// 本地数据源
+interface PaymentLocalDataSource {
+    suspend fun getPayments(): Flow<List<PaymentEntity>>
+    suspend fun savePayments(payments: List<PaymentEntity>)
+    suspend fun clearPayments()
+}
+
+class PaymentLocalDataSourceImpl(
+    private val dao: PaymentDao
+) : PaymentLocalDataSource {
+    override suspend fun getPayments(): Flow<List<PaymentEntity>> = dao.observeAll()
+    
+    override suspend fun savePayments(payments: List<PaymentEntity>) {
+        dao.upsertAll(payments)
+    }
+    
+    override suspend fun clearPayments() {
+        dao.deleteAll()
+    }
+}
+
+// ========== 第2层：Repository（仓储层）==========
+// 职责：组合远程和本地数据源，提供统一的数据访问接口
+
+interface PaymentRepository {
+    fun observePayments(): Flow<List<Payment>>
+    suspend fun refreshPayments(page: Int = 1, status: String? = null): Result<List<Payment>>
+    suspend fun loadMorePayments(page: Int, status: String? = null): Result<List<Payment>>
+    suspend fun getPaymentById(id: String): Result<Payment>
+}
+
+class PaymentRepositoryImpl(
+    private val remoteDataSource: PaymentRemoteDataSource,
+    private val localDataSource: PaymentLocalDataSource,
+    private val dispatchers: CoroutineDispatcherProvider
+) : PaymentRepository {
+    
+    // 观察本地数据库变化（自动更新UI）
+    override fun observePayments(): Flow<List<Payment>> =
+        localDataSource.getPayments()
+            .map { entities -> entities.map { it.toDomain() } }
+            .flowOn(dispatchers.io)
+    
+    // 刷新：先读本地，再请求网络，失败时回退本地
+    override suspend fun refreshPayments(page: Int, status: String?): Result<List<Payment>> =
+        withContext(dispatchers.io) {
+            // 先保存本地数据（如果有）
+            val localData = localDataSource.getPayments().firstOrNull().orEmpty()
+            
+            // 请求网络
+            remoteDataSource.getPayments(page, status)
+                .onSuccess { remoteData ->
+                    // 网络成功：保存到本地并返回
+                    localDataSource.savePayments(remoteData.map { it.toEntity() })
+                    Result.success(remoteData.map { it.toDomain() })
+                }
+                .onFailure { error ->
+                    // 网络失败：如果有本地数据，返回本地；否则返回错误
+                    if (localData.isNotEmpty()) {
+                        Result.success(localData.map { it.toDomain() })
+                    } else {
+                        Result.failure(error)
+                    }
+                }
+        }
+    
+    override suspend fun loadMorePayments(page: Int, status: String?): Result<List<Payment>> =
+        withContext(dispatchers.io) {
+            remoteDataSource.getPayments(page, status)
+                .map { dtos -> dtos.map { it.toDomain() } }
+        }
+    
+    override suspend fun getPaymentById(id: String): Result<Payment> =
+        withContext(dispatchers.io) {
+            remoteDataSource.getPaymentById(id)
+                .map { it.toDomain() }
+        }
+}
+
+// ========== 第3层：UseCase（用例层，可选）==========
+// 职责：封装业务逻辑，组合多个 Repository 操作
+
+class LoadPaymentsUseCase(
+    private val repository: PaymentRepository,
+    private val dispatchers: CoroutineDispatcherProvider
+) {
+    suspend operator fun invoke(
+        page: Int = 1,
+        status: String? = null,
+        isRefresh: Boolean = false
+    ): Flow<UiState<PagedData<Payment>>> = flow {
+        emit(UiState.Loading)
+        
+        val result = if (isRefresh) {
+            repository.refreshPayments(page, status)
+        } else {
+            repository.loadMorePayments(page, status)
+        }
+        
+        result.fold(
+            onSuccess = { payments ->
+                val pagedData = PagedData(
+                    items = payments,
+                    currentPage = page,
+                    hasMore = payments.size >= 20 // 假设每页20条
+                )
+                emit(
+                    if (pagedData.items.isEmpty()) UiState.Empty
+                    else UiState.Success(pagedData)
+                )
+            },
+            onFailure = { error ->
+                emit(UiState.Error(
+                    message = error.message ?: "加载失败",
+                    errorType = mapErrorType(error),
+                    retryable = true
+                ))
+            }
+        )
+    }.flowOn(dispatchers.io)
+    
+    private fun mapErrorType(error: Throwable): ErrorType {
+        return when (error) {
+            is java.net.SocketTimeoutException -> ErrorType.TIMEOUT
+            is java.net.UnknownHostException -> ErrorType.NETWORK_ERROR
+            is retrofit2.HttpException -> {
+                when (error.code()) {
+                    in 400..499 -> ErrorType.CLIENT_ERROR
+                    in 500..599 -> ErrorType.SERVER_ERROR
+                    else -> ErrorType.UNKNOWN_ERROR
+                }
+            }
+            else -> ErrorType.UNKNOWN_ERROR
+        }
+    }
+}
+
+// ========== 第4层：ViewModel（视图模型层）==========
+// 职责：管理UI状态，处理用户交互
+
+class PaymentListViewModel(
+    private val loadPaymentsUseCase: LoadPaymentsUseCase,
+    private val repository: PaymentRepository,
+    private val dispatchers: CoroutineDispatcherProvider
+) : ViewModel() {
+    
+    // UI 状态
+    private val _uiState = MutableStateFlow<UiState<PagedData<Payment>>>(UiState.Loading)
+    val uiState: StateFlow<UiState<PagedData<Payment>>> = _uiState.asStateFlow()
+    
+    // 当前分页信息
+    private var currentPage = 1
+    private var hasMore = true
+    
+    // 观察本地数据变化（实时更新列表）
+    val payments: StateFlow<List<Payment>> = repository.observePayments()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
+    
+    init {
+        loadPayments(page = 1, isRefresh = true)
+    }
+    
+    // 加载支付列表
+    fun loadPayments(page: Int = 1, isRefresh: Boolean = false) {
+        if (!isRefresh && !hasMore) return // 没有更多数据
+        
+        viewModelScope.launch(dispatchers.io) {
+            loadPaymentsUseCase(page, null, isRefresh)
+                .collect { state ->
+                    _uiState.value = state
+                    
+                    // 更新分页信息
+                    if (state is UiState.Success) {
+                        currentPage = state.data.currentPage
+                        hasMore = state.data.hasMore
+                    }
+                }
+        }
+    }
+    
+    // 刷新
+    fun refresh() {
+        currentPage = 1
+        hasMore = true
+        loadPayments(page = 1, isRefresh = true)
+    }
+    
+    // 加载更多
+    fun loadMore() {
+        if (hasMore && _uiState.value !is UiState.Loading) {
+            loadPayments(page = currentPage + 1, isRefresh = false)
+        }
+    }
+    
+    // 重试
+    fun retry() {
+        loadPayments(page = currentPage, isRefresh = true)
+    }
+}
+
+// ========== 第5层：UI层（Activity/Fragment）==========
+// 职责：展示UI，响应用户操作
+
+class PaymentListActivity : AppCompatActivity() {
+    private val viewModel: PaymentListViewModel by inject()
+    private lateinit var fullScreenView: FullScreenView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var swipeRefresh: SwipeRefreshLayout
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_payment_list)
+        
+        fullScreenView = findViewById(R.id.fullScreenView)
+        recyclerView = findViewById(R.id.recyclerView)
+        swipeRefresh = findViewById(R.id.swipeRefresh)
+        
+        setupRecyclerView()
+        observeState()
+        observePayments()
+        setupSwipeRefresh()
+    }
+    
+    private fun setupRecyclerView() {
+        val adapter = PaymentAdapter { payment ->
+            // 点击跳转详情
+            startActivity(Intent(this, PaymentDetailActivity::class.java).apply {
+                putExtra("payment_id", payment.id)
+            })
+        }
+        recyclerView.adapter = adapter
+        
+        // 滚动到底部加载更多
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!recyclerView.canScrollVertically(1)) {
+                    viewModel.loadMore()
+                }
+            }
+        })
+    }
+    
+    private fun observeState() {
+        lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is UiState.Loading -> {
+                        if (payments.value.isEmpty()) {
+                            fullScreenView.show(FullScreenViewType.LoadingView)
+                            recyclerView.gone()
+                        }
+                        swipeRefresh.isRefreshing = true
+                    }
+                    is UiState.Success -> {
+                        fullScreenView.hide(FullScreenViewType.LoadingView)
+                        fullScreenView.hide(FullScreenViewType.ErrorView)
+                        recyclerView.visible()
+                        swipeRefresh.isRefreshing = false
+                    }
+                    is UiState.Error -> {
+                        swipeRefresh.isRefreshing = false
+                        if (payments.value.isEmpty()) {
+                            fullScreenView.show(FullScreenViewType.ErrorView)
+                            recyclerView.gone()
+                            // 设置重试按钮点击事件
+                            fullScreenView.setOnClickListener { viewModel.retry() }
+                        } else {
+                            // 有数据时显示 Toast
+                            Toast.makeText(
+                                this@PaymentListActivity,
+                                "加载失败: ${state.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    is UiState.Empty -> {
+                        fullScreenView.show(FullScreenViewType.ErrorView)
+                        recyclerView.gone()
+                        swipeRefresh.isRefreshing = false
+                    }
+                }
+            }
+        }
+    }
+    
+    // 观察本地数据变化（实时更新列表）
+    private fun observePayments() {
+        lifecycleScope.launch {
+            viewModel.payments.collect { payments ->
+                (recyclerView.adapter as? PaymentAdapter)?.submitList(payments)
+            }
+        }
+    }
+    
+    private fun setupSwipeRefresh() {
+        swipeRefresh.setOnRefreshListener {
+            viewModel.refresh()
+        }
+    }
+}
+```
+
+**分层优势说明：**
+- **易于测试**：每层都可以独立测试，使用 Fake 实现替换
+- **易于替换**：DataSource 可以轻松切换（如从 Retrofit 切换到 GraphQL）
+- **职责清晰**：每层只做自己的事情，不越界
+- **易于扩展**：新增功能只需在对应层添加代码
+
+---
+
+#### 3.3 状态管理：StateFlow + Sealed Class 最佳实践
+
+**示例：复杂场景的状态管理（列表 + 详情 + 搜索 + 筛选）**
+
+```kotlin
+// 1. 定义复合状态（多个状态组合）
+data class PaymentListState(
+    val payments: List<Payment> = emptyList(),
+    val isLoading: Boolean = false,
+    val isLoadingMore: Boolean = false,
+    val error: ErrorState? = null,
+    val filter: PaymentFilter = PaymentFilter.ALL,
+    val searchQuery: String = "",
+    val currentPage: Int = 1,
+    val hasMore: Boolean = true
+) {
+    val isEmpty: Boolean
+        get() = payments.isEmpty() && !isLoading && error == null
+    
+    val showError: Boolean
+        get() = error != null && payments.isEmpty()
+}
+
+data class ErrorState(
+    val message: String,
+    val type: ErrorType,
+    val retryable: Boolean = true
+)
+
+enum class PaymentFilter {
+    ALL, PENDING, SUCCESS, FAILED
+}
+
+// 2. ViewModel 中使用单一 StateFlow 管理所有状态
+class PaymentListViewModel(
+    private val repository: PaymentRepository,
+    private val dispatchers: CoroutineDispatcherProvider
+) : ViewModel() {
+    
+    private val _state = MutableStateFlow(PaymentListState())
+    val state: StateFlow<PaymentListState> = _state.asStateFlow()
+    
+    // 只暴露 UI 需要的派生状态
+    val isEmpty: StateFlow<Boolean> = _state
+        .map { it.isEmpty }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+    
+    val showError: StateFlow<Boolean> = _state
+        .map { it.showError }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+    
+    // 加载数据
+    fun loadPayments(isRefresh: Boolean = false) {
+        val page = if (isRefresh) 1 else _state.value.currentPage
+        
+        viewModelScope.launch(dispatchers.io) {
+            _state.update { it.copy(isLoading = true, error = null) }
+            
+            repository.refreshPayments(page, _state.value.filter.name)
+                .onSuccess { payments ->
+                    _state.update {
+                        it.copy(
+                            payments = if (isRefresh) payments else it.payments + payments,
+                            isLoading = false,
+                            currentPage = page,
+                            hasMore = payments.size >= 20,
+                            error = null
+                        )
+                    }
+                }
+                .onFailure { error ->
+                    _state.update {
+                        it.copy(
+                            isLoading = false,
+                            error = ErrorState(
+                                message = error.message ?: "加载失败",
+                                type = mapErrorType(error),
+                                retryable = true
+                            )
+                        )
+                    }
+                }
+        }
+    }
+    
+    // 加载更多
+    fun loadMore() {
+        if (_state.value.isLoadingMore || !_state.value.hasMore) return
+        
+        viewModelScope.launch(dispatchers.io) {
+            _state.update { it.copy(isLoadingMore = true) }
+            
+            repository.loadMorePayments(_state.value.currentPage + 1, _state.value.filter.name)
+                .onSuccess { payments ->
+                    _state.update {
+                        it.copy(
+                            payments = it.payments + payments,
+                            isLoadingMore = false,
+                            currentPage = it.currentPage + 1,
+                            hasMore = payments.size >= 20
+                        )
+                    }
+                }
+                .onFailure { error ->
+                    _state.update {
+                        it.copy(
+                            isLoadingMore = false,
+                            error = ErrorState(error.message ?: "加载失败", mapErrorType(error))
+                        )
+                    }
+                }
+        }
+    }
+    
+    // 筛选
+    fun setFilter(filter: PaymentFilter) {
+        _state.update { it.copy(filter = filter, currentPage = 1) }
+        loadPayments(isRefresh = true)
+    }
+    
+    // 搜索（防抖）
+    fun search(query: String) {
+        _state.update { it.copy(searchQuery = query) }
+        // 使用 Flow 实现防抖搜索（见下方）
+    }
+    
+    private fun mapErrorType(error: Throwable): ErrorType {
+        return when (error) {
+            is SocketTimeoutException -> ErrorType.TIMEOUT
+            is UnknownHostException -> ErrorType.NETWORK_ERROR
+            is HttpException -> {
+                when (error.code()) {
+                    in 400..499 -> ErrorType.CLIENT_ERROR
+                    in 500..599 -> ErrorType.SERVER_ERROR
+                    else -> ErrorType.UNKNOWN_ERROR
+                }
+            }
+            else -> ErrorType.UNKNOWN_ERROR
+        }
+    }
+}
+
+// 3. UI 层观察状态
+class PaymentListActivity : AppCompatActivity() {
+    private val viewModel: PaymentListViewModel by inject()
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_payment_list)
+        
+        observeState()
+    }
+    
+    private fun observeState() {
+        lifecycleScope.launch {
+            viewModel.state.collect { state ->
+                // 更新列表
+                updateList(state.payments)
+                
+                // 更新加载状态
+                if (state.isLoading) {
+                    fullScreenView.show(FullScreenViewType.LoadingView)
+                } else {
+                    fullScreenView.hide(FullScreenViewType.LoadingView)
+                }
+                
+                // 更新错误状态
+                state.error?.let { error ->
+                    if (state.payments.isEmpty()) {
+                        fullScreenView.show(FullScreenViewType.ErrorView)
+                        // 设置重试
+                        fullScreenView.setOnClickListener { viewModel.loadPayments(isRefresh = true) }
+                    }
+                } ?: run {
+                    fullScreenView.hide(FullScreenViewType.ErrorView)
+                }
+                
+                // 更新空状态
+                if (state.isEmpty) {
+                    showEmptyState()
+                }
+            }
+        }
+        
+        // 观察派生状态
+        lifecycleScope.launch {
+            viewModel.isEmpty.collect { isEmpty ->
+                emptyView.visibility = if (isEmpty) View.VISIBLE else View.GONE
+            }
+        }
+    }
+}
+```
+
+---
+
+#### 3.4 错误处理：分类处理与用户友好提示
+
+**示例：完整的错误处理策略**
+
+```kotlin
+// 1. 错误分类与映射
+sealed class AppError : Exception() {
+    data class NetworkError(val cause: Throwable) : AppError()
+    data class TimeoutError(val timeout: Long) : AppError()
+    data class ServerError(val code: Int, val message: String) : AppError()
+    data class ClientError(val code: Int, val message: String) : AppError()
+    data class UnknownError(val cause: Throwable) : AppError()
+}
+
+// 2. Repository 层错误转换
+class PaymentRepositoryImpl(
+    private val remoteDataSource: PaymentRemoteDataSource,
+    private val localDataSource: PaymentLocalDataSource,
+    private val dispatchers: CoroutineDispatcherProvider
+) : PaymentRepository {
+    
+    override suspend fun refreshPayments(page: Int, status: String?): Result<List<Payment>> =
+        withContext(dispatchers.io) {
+            runCatching {
+                remoteDataSource.getPayments(page, status)
+                    .getOrElse { throw mapToAppError(it) }
+                    .map { it.toDomain() }
+            }.fold(
+                onSuccess = { Result.success(it) },
+                onFailure = { Result.failure(mapToAppError(it)) }
+            )
+        }
+    
+    private fun mapToAppError(error: Throwable): AppError {
+        return when (error) {
+            is SocketTimeoutException -> AppError.TimeoutError(10000)
+            is UnknownHostException -> AppError.NetworkError(error)
+            is HttpException -> {
+                when (error.code()) {
+                    in 400..499 -> AppError.ClientError(error.code(), error.message())
+                    in 500..599 -> AppError.ServerError(error.code(), error.message())
+                    else -> AppError.UnknownError(error)
+                }
+            }
+            else -> AppError.UnknownError(error)
+        }
+    }
+}
+
+// 3. ViewModel 层错误处理与用户提示
+class PaymentListViewModel(
+    private val repository: PaymentRepository,
+    private val dispatchers: CoroutineDispatcherProvider
+) : ViewModel() {
+    
+    private val _uiState = MutableStateFlow<UiState<PagedData<Payment>>>(UiState.Loading)
+    val uiState: StateFlow<UiState<PagedData<Payment>>> = _state.asStateFlow()
+    
+    // 副作用：用于导航、显示 Toast 等一次性事件
+    private val _sideEffect = Channel<SideEffect>(Channel.BUFFERED)
+    val sideEffect: Flow<SideEffect> = _sideEffect.receiveAsFlow()
+    
+    sealed class SideEffect {
+        data class ShowToast(val message: String) : SideEffect()
+        data class NavigateToDetail(val paymentId: String) : SideEffect()
+    }
+    
+    fun loadPayments() {
+        viewModelScope.launch(dispatchers.io) {
+            _uiState.value = UiState.Loading
+            
+            repository.refreshPayments(1, null)
+                .onSuccess { payments ->
+                    _uiState.value = if (payments.isEmpty()) {
+                        UiState.Empty
+                    } else {
+                        UiState.Success(PagedData(payments, 1, true))
+                    }
+                }
+                .onFailure { error ->
+                    val (message, retryable) = when (error) {
+                        is AppError.NetworkError -> {
+                            "网络连接失败，请检查网络设置" to true
+                        }
+                        is AppError.TimeoutError -> {
+                            "请求超时，请稍后重试" to true
+                        }
+                        is AppError.ServerError -> {
+                            "服务器错误，请稍后重试" to true
+                        }
+                        is AppError.ClientError -> {
+                            when (error.code) {
+                                401 -> {
+                                    _sideEffect.send(SideEffect.ShowToast("登录已过期，请重新登录"))
+                                    "未授权访问" to false
+                                }
+                                403 -> "无权限访问" to false
+                                404 -> "资源不存在" to false
+                                else -> "请求失败" to true
+                            }
+                        }
+                        else -> "未知错误" to true
+                    }
+                    
+                    _uiState.value = UiState.Error(
+                        message = message,
+                        errorType = mapErrorType(error),
+                        retryable = retryable
+                    )
+                }
+        }
+    }
+    
+    fun retry() {
+        if (_uiState.value is UiState.Error && 
+            (_uiState.value as UiState.Error).retryable) {
+            loadPayments()
+        }
+    }
+    
+    private fun mapErrorType(error: Throwable): ErrorType {
+        return when (error) {
+            is AppError.NetworkError -> ErrorType.NETWORK_ERROR
+            is AppError.TimeoutError -> ErrorType.TIMEOUT
+            is AppError.ServerError -> ErrorType.SERVER_ERROR
+            is AppError.ClientError -> ErrorType.CLIENT_ERROR
+            else -> ErrorType.UNKNOWN_ERROR
+        }
+    }
+}
+
+// 4. UI 层处理错误与副作用
+class PaymentListActivity : AppCompatActivity() {
+    private val viewModel: PaymentListViewModel by inject()
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_payment_list)
+        
+        observeState()
+        observeSideEffect()
+    }
+    
+    private fun observeState() {
+        lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is UiState.Error -> {
+                        fullScreenView.show(FullScreenViewType.ErrorView)
+                        errorText.text = state.message
+                        
+                        // 根据错误类型显示不同的重试按钮
+                        if (state.retryable) {
+                            retryButton.visible()
+                            retryButton.setOnClickListener { viewModel.retry() }
+                        } else {
+                            retryButton.gone()
+                        }
+                    }
+                    // ... 其他状态处理
+                }
+            }
+        }
+    }
+    
+    private fun observeSideEffect() {
+        lifecycleScope.launch {
+            viewModel.sideEffect.collect { effect ->
+                when (effect) {
+                    is SideEffect.ShowToast -> {
+                        Toast.makeText(this@PaymentListActivity, effect.message, Toast.LENGTH_SHORT).show()
+                    }
+                    is SideEffect.NavigateToDetail -> {
+                        startActivity(Intent(this@PaymentListActivity, PaymentDetailActivity::class.java).apply {
+                            putExtra("payment_id", effect.paymentId)
+                        })
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+#### 3.5 并发与取消：协程生命周期管理
+
+**示例：正确处理并发、取消、重试**
+
+```kotlin
+class PaymentListViewModel(
+    private val repository: PaymentRepository,
+    private val dispatchers: CoroutineDispatcherProvider
+) : ViewModel() {
+    
+    // 当前正在执行的加载任务
+    private var loadJob: Job? = null
+    private var searchJob: Job? = null
+    
+    // 加载支付列表（支持取消）
+    fun loadPayments() {
+        // 取消之前的加载任务
+        loadJob?.cancel()
+        
+        loadJob = viewModelScope.launch(dispatchers.io) {
+            try {
+                _uiState.value = UiState.Loading
+                val payments = repository.refreshPayments(1, null).getOrThrow()
+                _uiState.value = UiState.Success(PagedData(payments, 1, true))
+            } catch (e: CancellationException) {
+                // 协程被取消，不需要处理（这是正常的）
+                throw e
+            } catch (e: Exception) {
+                // 其他错误
+                if (isActive) { // 确保协程未被取消
+                    _uiState.value = UiState.Error(e.message ?: "加载失败", ErrorType.UNKNOWN_ERROR)
+                }
+            }
+        }
+    }
+    
+    // 搜索（防抖 + 取消之前的搜索）
+    fun search(query: String) {
+        searchJob?.cancel()
+        
+        searchJob = viewModelScope.launch(dispatchers.io) {
+            delay(300) // 防抖：300ms
+            
+            if (!isActive) return@launch // 检查是否被取消
+            
+            try {
+                val results = repository.searchPayments(query).getOrThrow()
+                _uiState.value = UiState.Success(PagedData(results, 1, false))
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                if (isActive) {
+                    _uiState.value = UiState.Error(e.message ?: "搜索失败", ErrorType.UNKNOWN_ERROR)
+                }
+            }
+        }
+    }
+    
+    // 并行加载多个数据源
+    fun loadPaymentDetail(paymentId: String) {
+        viewModelScope.launch(dispatchers.io) {
+            try {
+                // 使用 async 并行加载
+                val paymentDeferred = async { repository.getPaymentById(paymentId) }
+                val relatedPaymentsDeferred = async { repository.getRelatedPayments(paymentId) }
+                
+                // 等待所有结果
+                val payment = paymentDeferred.await().getOrThrow()
+                val relatedPayments = relatedPaymentsDeferred.await().getOrThrow()
+                
+                _uiState.value = UiState.Success(
+                    PaymentDetailData(payment, relatedPayments)
+                )
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                if (isActive) {
+                    _uiState.value = UiState.Error(e.message ?: "加载失败", ErrorType.UNKNOWN_ERROR)
+                }
+            }
+        }
+    }
+    
+    // 带重试的加载
+    fun loadWithRetry(maxRetries: Int = 3) {
+        viewModelScope.launch(dispatchers.io) {
+            var retryCount = 0
+            var lastError: Throwable? = null
+            
+            while (retryCount < maxRetries && isActive) {
+                try {
+                    val payments = repository.refreshPayments(1, null).getOrThrow()
+                    _uiState.value = UiState.Success(PagedData(payments, 1, true))
+                    return@launch // 成功，退出循环
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    lastError = e
+                    retryCount++
+                    
+                    if (retryCount < maxRetries) {
+                        delay(1000 * retryCount) // 指数退避：1s, 2s, 3s
+                    }
+                }
+            }
+            
+            // 所有重试都失败
+            if (isActive) {
+                _uiState.value = UiState.Error(
+                    lastError?.message ?: "加载失败",
+                    ErrorType.UNKNOWN_ERROR,
+                    retryable = true
+                )
+            }
+        }
+    }
+    
+    // 在 ViewModel 清理时取消所有任务（viewModelScope 会自动处理）
+    override fun onCleared() {
+        super.onCleared()
+        // viewModelScope 会自动取消所有协程，但也可以手动取消
+        loadJob?.cancel()
+        searchJob?.cancel()
+    }
+}
+
+// Activity/Fragment 中使用 lifecycleScope（自动取消）
+class PaymentListActivity : AppCompatActivity() {
+    private val viewModel: PaymentListViewModel by inject()
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_payment_list)
+        
+        // lifecycleScope 会在 Activity 销毁时自动取消
+        lifecycleScope.launchWhenStarted {
+            viewModel.uiState.collect { state ->
+                // 处理状态
+            }
+        }
+        
+        // 或者使用 repeatOnLifecycle（推荐，更精确的生命周期控制）
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    // 只在 STARTED 状态时收集
+                }
+            }
+        }
+    }
+}
+```
+
+**协程取消最佳实践：**
+- 使用 `viewModelScope`：ViewModel 销毁时自动取消
+- 使用 `lifecycleScope`：Activity/Fragment 销毁时自动取消
+- 检查 `isActive`：在长时间运行的任务中定期检查
+- 捕获 `CancellationException`：正确处理取消异常
+- 使用 `repeatOnLifecycle`：精确控制收集时机
 
 ### 4) 可快速演示的练习题方向
 - 列表 + 详情：调用示例 API（可 mock），列表加载、下拉刷新、空态/错误态、点击进入详情。

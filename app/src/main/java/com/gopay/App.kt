@@ -11,26 +11,44 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 /**
- * 自定义 Application，负责在应用进程启动时完成全局依赖注入初始化。
- * Koin 会在此处注册各功能模块（网络、图片、存储、协程调度器等），
- * 保证 Activity / ViewModel 等组件随取随用。
+ * 应用程序主类
+ * 
+ * 这个类继承自Application，是Android应用的入口点。
+ * 主要负责在应用启动时初始化依赖注入框架Koin。
+ * 
+ * 功能：
+ * 1. 在onCreate()方法中初始化Koin依赖注入容器
+ * 2. 注册所有需要的依赖模块（网络、存储、图片加载、协程调度器等）
+ * 3. 配置Android上下文和日志记录器
  */
 class App : Application() {
 
+    /**
+     * 应用创建时的回调方法
+     * 
+     * 当应用启动时，系统会调用这个方法。
+     * 在这里我们初始化Koin依赖注入框架，注册所有需要的模块。
+     */
     override fun onCreate() {
         super.onCreate()
-        // 初始化 Koin，并将当前 Application 作为上下文传入
+        
+        // 启动Koin依赖注入框架
         startKoin {
+            // 启用Android日志记录器，方便调试时查看依赖注入的日志
             androidLogger()
+            
+            // 设置Android上下文，这样Koin可以在需要时注入Context
             androidContext(this@App)
-            // 注册所有模块，模块可按功能拆分方便面试时扩展
+            
+            // 注册所有依赖模块
+            // 这些模块定义了应用中需要的各种依赖（网络、数据库、图片加载器等）
             modules(
                 listOf(
-                    appModule,
-                    dispatcherModule,
-                    imageModule,
-                    networkModule,
-                    storageModule
+                    appModule,          // 应用模块（当前为空，可扩展）
+                    dispatcherModule,   // 协程调度器模块
+                    imageModule,        // 图片加载模块（Picasso）
+                    networkModule,      // 网络请求模块（Retrofit + OkHttp）
+                    storageModule       // 存储模块（Room数据库 + SharedPreferences）
                 )
             )
         }
