@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.gopay.app-mergeDebugResources-55:/layout/full_screen_view.xml",
+        "source": "com.gopay.app-main-58:/layout/full_screen_view.xml"
+    },
+    {
+        "merged": "com.gopay.app-mergeDebugResources-55:/layout/activity_main.xml",
+        "source": "com.gopay.app-main-58:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.gopay.app-mergeDebugResources-55:/layout/row_loader.xml",
+        "source": "com.gopay.app-main-58:/layout/row_loader.xml"
+    }
+]

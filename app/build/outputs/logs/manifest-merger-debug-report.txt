@@ -1,0 +1,425 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:2:1-26:12
+MERGED from [androidx.databinding:viewbinding:8.1.4] /Users/wanghao/.gradle/caches/transforms-3/ef50fb68bdaebe3fa8d21da5d5ee8b59/transformed/viewbinding-8.1.4/AndroidManifest.xml:2:1-7:12
+MERGED from [io.insert-koin:koin-android:4.0.0] /Users/wanghao/.gradle/caches/transforms-3/03a1a11e8c67b2828a33625de40ea72b/transformed/koin-android-4.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.navigation:navigation-common:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/955a78b9890e8d14e1838fa305845468/transformed/navigation-common-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/97f2000904e9547508aaedab1c243bf3/transformed/navigation-common-ktx-2.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/a2ba4f0828866a1d8859352465dc81a0/transformed/navigation-runtime-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/22541fc0271384317fbd6c35ceb6e813/transformed/navigation-runtime-ktx-2.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-fragment:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/3ad666880c5729d0af02294fa078844f/transformed/navigation-fragment-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/ef2b3830d90db1b1641ddee86ed5ab7e/transformed/navigation-fragment-ktx-2.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/5e1e54e793ba73422d2ec4e94b265954/transformed/navigation-ui-ktx-2.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-ui:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/17766cc2c4b6674c979db36bf658d996/transformed/navigation-ui-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.12.0] /Users/wanghao/.gradle/caches/transforms-3/00fb9f32126193eb012636858c9431d1/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/7b017891ad926c470da358ba5dbf12d2/transformed/constraintlayout-2.2.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.airbnb.android:lottie:5.2.0] /Users/wanghao/.gradle/caches/transforms-3/40416d9b91d3287f7824d3bde1d8efde/transformed/lottie-5.2.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/71615ecaa78357a1b3be75ec4c038285/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/d5c42f41a7fc0fcf8376b44cc2baaf23/transformed/appcompat-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/wanghao/.gradle/caches/transforms-3/90d8dfa4d77994562db6a76f5ed43e55/transformed/recyclerview-1.3.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/wanghao/.gradle/caches/transforms-3/fe2d1adde012f766ade9239009aa0c9e/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.fragment:fragment:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/74cd4b8b851a650fdb60ded60fef8336/transformed/fragment-1.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.fragment:fragment-ktx:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/2f926c4cba5b4a84c4a01039c445c91a/transformed/fragment-ktx-1.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/0f73f681c2a2fe4d611e18435ee88fda/transformed/activity-1.9.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/74872bc4b252b0599cf1019cfd3d23b5/transformed/activity-ktx-1.9.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/634318be88b92d0623cef059d9480eb8/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/bbac1c48bba2a07dc606664727ac4c54/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/1bf0f7e14899eeed85a9f21f0584abe3/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.5.0] /Users/wanghao/.gradle/caches/transforms-3/55355448697cd5e4cd51f4cd9ac9954e/transformed/transition-1.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/9142631641536abb1b91ad13e347e076/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/d67959c84da16ad11270e439a56c33bd/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4a5e522e6e71fa45cfa437c73f7f003b/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/92ee1501dc34e0e1e1f45b9b85399c9e/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/4d1e7d41180b562c1ea98bebe2ec419a/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4b999001eb89f6716830e40e63b99ca1/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d64bc3d2842bd80e6500e78b1f4c1ddf/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/553a8bd3349a93222307b05b3211d458/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/339070f248a1b542cbf614cf8acc5717/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/acad996eb8ebc418bdb1d4a3489b5dd1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/e9686fd5b931b0ef962d8f2ae68decf3/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/477a610efcd99d983dc0ad99f23393d1/transformed/lifecycle-livedata-2.8.7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/eb9b79943a02eab8a40dd6a82f467f3c/transformed/lifecycle-livedata-core-2.8.7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/9cb660a6b334cf0d9aa25e9f032d9883/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/2fe850ae03c978820417858e74932636/transformed/lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e0d945816cde941d6e2245dba29d8a9a/transformed/lifecycle-viewmodel-2.8.7/AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e7833dbe35aa50768a9826314bbc8a02/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/05a1fb92d330c6e23a50ad970baaf368/transformed/lifecycle-livedata-core-ktx-2.8.7/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/da4f83d58c67f98af4d24200c94ac46f/transformed/lifecycle-viewmodel-ktx-2.8.7/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/0183155ff5deb9c082ab9706d459c7ca/transformed/lifecycle-viewmodel-savedstate-2.8.7/AndroidManifest.xml:17:1-22:12
+MERGED from [org.jetbrains.androidx.core:core-bundle-android-debug:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/881d32702f67cab40cdba168e1280450/transformed/core-bundle-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-ktx:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/146e315d5219c67301d4cc38066f0e85/transformed/core-ktx-1.15.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-rxjava2:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/3b5517faee861c83b0a24e042d6993be/transformed/room-rxjava2-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/f473055e638b31806ab4c482323038ce/transformed/room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/ff7d681fc91b99b91b06cc4d3c710eda/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/d2571f3da914ca6a72ae43279df83cb2/transformed/sqlite-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d3b6d928feb12ddde2d6a0cb87536d67/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/75fa1e4d23133bb32ed7cc95823bf846/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/c3aba8ac37caa3eb72ad2730a65de1a6/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/ccadb6dc31e7f9e1f1ec1efda7e56e12/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/fe3e148f558dab5e367bccc633777db1/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/67b9c7316af042f0db3e7cfa3e8218ae/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/811efb3d9ac07689b62ea6f8ef5b8473/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6122618de5c5dbcc067a596764f10901/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/94753e5e92062ed0426978e181864947/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/wanghao/.gradle/caches/transforms-3/fb49b6ac5c5368e2e0fd3f5e8d25d160/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/wanghao/.gradle/caches/transforms-3/e94a102e335522019833fe27ed1df4e5/transformed/rxandroid-2.1.1/AndroidManifest.xml:15:1-20:12
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/wanghao/.gradle/caches/transforms-3/ad08d91a8e0818435e1556f8fdf47ab2/transformed/exifinterface-27.1.0/AndroidManifest.xml:17:1-22:12
+	package
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:3:5-24
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:5:22-64
+application
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:7:5-24:19
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:7:5-24:19
+MERGED from [io.insert-koin:koin-android:4.0.0] /Users/wanghao/.gradle/caches/transforms-3/03a1a11e8c67b2828a33625de40ea72b/transformed/koin-android-4.0.0/AndroidManifest.xml:7:5-20
+MERGED from [io.insert-koin:koin-android:4.0.0] /Users/wanghao/.gradle/caches/transforms-3/03a1a11e8c67b2828a33625de40ea72b/transformed/koin-android-4.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.material:material:1.12.0] /Users/wanghao/.gradle/caches/transforms-3/00fb9f32126193eb012636858c9431d1/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] /Users/wanghao/.gradle/caches/transforms-3/00fb9f32126193eb012636858c9431d1/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/7b017891ad926c470da358ba5dbf12d2/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/7b017891ad926c470da358ba5dbf12d2/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
+MERGED from [com.airbnb.android:lottie:5.2.0] /Users/wanghao/.gradle/caches/transforms-3/40416d9b91d3287f7824d3bde1d8efde/transformed/lottie-5.2.0/AndroidManifest.xml:9:5-20
+MERGED from [com.airbnb.android:lottie:5.2.0] /Users/wanghao/.gradle/caches/transforms-3/40416d9b91d3287f7824d3bde1d8efde/transformed/lottie-5.2.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/67b9c7316af042f0db3e7cfa3e8218ae/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/67b9c7316af042f0db3e7cfa3e8218ae/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:13:9-54
+	android:icon
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:15:9-40
+	android:networkSecurityConfig
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:12:9-69
+	android:name
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:8:9-37
+activity#com.gopay.MainActivity
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:16:9-23:20
+	android:exported
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:18:13-36
+	android:name
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:17:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:19:13-22:29
+action#android.intent.action.MAIN
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml:21:27-74
+uses-sdk
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:8.1.4] /Users/wanghao/.gradle/caches/transforms-3/ef50fb68bdaebe3fa8d21da5d5ee8b59/transformed/viewbinding-8.1.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.1.4] /Users/wanghao/.gradle/caches/transforms-3/ef50fb68bdaebe3fa8d21da5d5ee8b59/transformed/viewbinding-8.1.4/AndroidManifest.xml:5:5-44
+MERGED from [io.insert-koin:koin-android:4.0.0] /Users/wanghao/.gradle/caches/transforms-3/03a1a11e8c67b2828a33625de40ea72b/transformed/koin-android-4.0.0/AndroidManifest.xml:5:5-44
+MERGED from [io.insert-koin:koin-android:4.0.0] /Users/wanghao/.gradle/caches/transforms-3/03a1a11e8c67b2828a33625de40ea72b/transformed/koin-android-4.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/955a78b9890e8d14e1838fa305845468/transformed/navigation-common-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/955a78b9890e8d14e1838fa305845468/transformed/navigation-common-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/97f2000904e9547508aaedab1c243bf3/transformed/navigation-common-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/97f2000904e9547508aaedab1c243bf3/transformed/navigation-common-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/a2ba4f0828866a1d8859352465dc81a0/transformed/navigation-runtime-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/a2ba4f0828866a1d8859352465dc81a0/transformed/navigation-runtime-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/22541fc0271384317fbd6c35ceb6e813/transformed/navigation-runtime-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/22541fc0271384317fbd6c35ceb6e813/transformed/navigation-runtime-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/3ad666880c5729d0af02294fa078844f/transformed/navigation-fragment-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/3ad666880c5729d0af02294fa078844f/transformed/navigation-fragment-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/ef2b3830d90db1b1641ddee86ed5ab7e/transformed/navigation-fragment-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/ef2b3830d90db1b1641ddee86ed5ab7e/transformed/navigation-fragment-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/5e1e54e793ba73422d2ec4e94b265954/transformed/navigation-ui-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui-ktx:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/5e1e54e793ba73422d2ec4e94b265954/transformed/navigation-ui-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-ui:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/17766cc2c4b6674c979db36bf658d996/transformed/navigation-ui-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.8.3] /Users/wanghao/.gradle/caches/transforms-3/17766cc2c4b6674c979db36bf658d996/transformed/navigation-ui-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] /Users/wanghao/.gradle/caches/transforms-3/00fb9f32126193eb012636858c9431d1/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] /Users/wanghao/.gradle/caches/transforms-3/00fb9f32126193eb012636858c9431d1/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/7b017891ad926c470da358ba5dbf12d2/transformed/constraintlayout-2.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/7b017891ad926c470da358ba5dbf12d2/transformed/constraintlayout-2.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.airbnb.android:lottie:5.2.0] /Users/wanghao/.gradle/caches/transforms-3/40416d9b91d3287f7824d3bde1d8efde/transformed/lottie-5.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:5.2.0] /Users/wanghao/.gradle/caches/transforms-3/40416d9b91d3287f7824d3bde1d8efde/transformed/lottie-5.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/71615ecaa78357a1b3be75ec4c038285/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/71615ecaa78357a1b3be75ec4c038285/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/d5c42f41a7fc0fcf8376b44cc2baaf23/transformed/appcompat-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] /Users/wanghao/.gradle/caches/transforms-3/d5c42f41a7fc0fcf8376b44cc2baaf23/transformed/appcompat-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/wanghao/.gradle/caches/transforms-3/90d8dfa4d77994562db6a76f5ed43e55/transformed/recyclerview-1.3.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/wanghao/.gradle/caches/transforms-3/90d8dfa4d77994562db6a76f5ed43e55/transformed/recyclerview-1.3.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/wanghao/.gradle/caches/transforms-3/fe2d1adde012f766ade9239009aa0c9e/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/wanghao/.gradle/caches/transforms-3/fe2d1adde012f766ade9239009aa0c9e/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/74cd4b8b851a650fdb60ded60fef8336/transformed/fragment-1.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/74cd4b8b851a650fdb60ded60fef8336/transformed/fragment-1.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/2f926c4cba5b4a84c4a01039c445c91a/transformed/fragment-ktx-1.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.8.3] /Users/wanghao/.gradle/caches/transforms-3/2f926c4cba5b4a84c4a01039c445c91a/transformed/fragment-ktx-1.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/0f73f681c2a2fe4d611e18435ee88fda/transformed/activity-1.9.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/0f73f681c2a2fe4d611e18435ee88fda/transformed/activity-1.9.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/74872bc4b252b0599cf1019cfd3d23b5/transformed/activity-ktx-1.9.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.2] /Users/wanghao/.gradle/caches/transforms-3/74872bc4b252b0599cf1019cfd3d23b5/transformed/activity-ktx-1.9.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/634318be88b92d0623cef059d9480eb8/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/634318be88b92d0623cef059d9480eb8/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/bbac1c48bba2a07dc606664727ac4c54/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/bbac1c48bba2a07dc606664727ac4c54/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/1bf0f7e14899eeed85a9f21f0584abe3/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/1bf0f7e14899eeed85a9f21f0584abe3/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.5.0] /Users/wanghao/.gradle/caches/transforms-3/55355448697cd5e4cd51f4cd9ac9954e/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] /Users/wanghao/.gradle/caches/transforms-3/55355448697cd5e4cd51f4cd9ac9954e/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/9142631641536abb1b91ad13e347e076/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/9142631641536abb1b91ad13e347e076/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/d67959c84da16ad11270e439a56c33bd/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/d67959c84da16ad11270e439a56c33bd/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4a5e522e6e71fa45cfa437c73f7f003b/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4a5e522e6e71fa45cfa437c73f7f003b/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/92ee1501dc34e0e1e1f45b9b85399c9e/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/92ee1501dc34e0e1e1f45b9b85399c9e/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/4d1e7d41180b562c1ea98bebe2ec419a/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/4d1e7d41180b562c1ea98bebe2ec419a/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4b999001eb89f6716830e40e63b99ca1/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/wanghao/.gradle/caches/transforms-3/4b999001eb89f6716830e40e63b99ca1/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d64bc3d2842bd80e6500e78b1f4c1ddf/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d64bc3d2842bd80e6500e78b1f4c1ddf/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/553a8bd3349a93222307b05b3211d458/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/553a8bd3349a93222307b05b3211d458/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/339070f248a1b542cbf614cf8acc5717/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/339070f248a1b542cbf614cf8acc5717/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/acad996eb8ebc418bdb1d4a3489b5dd1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/acad996eb8ebc418bdb1d4a3489b5dd1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/e9686fd5b931b0ef962d8f2ae68decf3/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/wanghao/.gradle/caches/transforms-3/e9686fd5b931b0ef962d8f2ae68decf3/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/477a610efcd99d983dc0ad99f23393d1/transformed/lifecycle-livedata-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/477a610efcd99d983dc0ad99f23393d1/transformed/lifecycle-livedata-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/eb9b79943a02eab8a40dd6a82f467f3c/transformed/lifecycle-livedata-core-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/eb9b79943a02eab8a40dd6a82f467f3c/transformed/lifecycle-livedata-core-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/9cb660a6b334cf0d9aa25e9f032d9883/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/9cb660a6b334cf0d9aa25e9f032d9883/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/2fe850ae03c978820417858e74932636/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/2fe850ae03c978820417858e74932636/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e0d945816cde941d6e2245dba29d8a9a/transformed/lifecycle-viewmodel-2.8.7/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e0d945816cde941d6e2245dba29d8a9a/transformed/lifecycle-viewmodel-2.8.7/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e7833dbe35aa50768a9826314bbc8a02/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/e7833dbe35aa50768a9826314bbc8a02/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/05a1fb92d330c6e23a50ad970baaf368/transformed/lifecycle-livedata-core-ktx-2.8.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/05a1fb92d330c6e23a50ad970baaf368/transformed/lifecycle-livedata-core-ktx-2.8.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/da4f83d58c67f98af4d24200c94ac46f/transformed/lifecycle-viewmodel-ktx-2.8.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/da4f83d58c67f98af4d24200c94ac46f/transformed/lifecycle-viewmodel-ktx-2.8.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/0183155ff5deb9c082ab9706d459c7ca/transformed/lifecycle-viewmodel-savedstate-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/0183155ff5deb9c082ab9706d459c7ca/transformed/lifecycle-viewmodel-savedstate-2.8.7/AndroidManifest.xml:20:5-44
+MERGED from [org.jetbrains.androidx.core:core-bundle-android-debug:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/881d32702f67cab40cdba168e1280450/transformed/core-bundle-debug/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.androidx.core:core-bundle-android-debug:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/881d32702f67cab40cdba168e1280450/transformed/core-bundle-debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/146e315d5219c67301d4cc38066f0e85/transformed/core-ktx-1.15.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/146e315d5219c67301d4cc38066f0e85/transformed/core-ktx-1.15.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-rxjava2:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/3b5517faee861c83b0a24e042d6993be/transformed/room-rxjava2-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-rxjava2:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/3b5517faee861c83b0a24e042d6993be/transformed/room-rxjava2-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/f473055e638b31806ab4c482323038ce/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/f473055e638b31806ab4c482323038ce/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/ff7d681fc91b99b91b06cc4d3c710eda/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/ff7d681fc91b99b91b06cc4d3c710eda/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/d2571f3da914ca6a72ae43279df83cb2/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/wanghao/.gradle/caches/transforms-3/d2571f3da914ca6a72ae43279df83cb2/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d3b6d928feb12ddde2d6a0cb87536d67/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/d3b6d928feb12ddde2d6a0cb87536d67/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/75fa1e4d23133bb32ed7cc95823bf846/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/75fa1e4d23133bb32ed7cc95823bf846/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/c3aba8ac37caa3eb72ad2730a65de1a6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/wanghao/.gradle/caches/transforms-3/c3aba8ac37caa3eb72ad2730a65de1a6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/ccadb6dc31e7f9e1f1ec1efda7e56e12/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/ccadb6dc31e7f9e1f1ec1efda7e56e12/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/fe3e148f558dab5e367bccc633777db1/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/wanghao/.gradle/caches/transforms-3/fe3e148f558dab5e367bccc633777db1/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/67b9c7316af042f0db3e7cfa3e8218ae/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/67b9c7316af042f0db3e7cfa3e8218ae/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/811efb3d9ac07689b62ea6f8ef5b8473/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/811efb3d9ac07689b62ea6f8ef5b8473/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6122618de5c5dbcc067a596764f10901/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6122618de5c5dbcc067a596764f10901/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/94753e5e92062ed0426978e181864947/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/94753e5e92062ed0426978e181864947/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/wanghao/.gradle/caches/transforms-3/fb49b6ac5c5368e2e0fd3f5e8d25d160/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/wanghao/.gradle/caches/transforms-3/fb49b6ac5c5368e2e0fd3f5e8d25d160/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/wanghao/.gradle/caches/transforms-3/e94a102e335522019833fe27ed1df4e5/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/wanghao/.gradle/caches/transforms-3/e94a102e335522019833fe27ed1df4e5/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/wanghao/.gradle/caches/transforms-3/ad08d91a8e0818435e1556f8fdf47ab2/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/wanghao/.gradle/caches/transforms-3/ad08d91a8e0818435e1556f8fdf47ab2/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/wanghao/Desktop/android-code-interviews-base-app/app/src/main/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/wanghao/.gradle/caches/transforms-3/3f3e9d4515610e79c1bb3ced949d949f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /Users/wanghao/.gradle/caches/transforms-3/78244744f0d71e3ef710212e251bb46b/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /Users/wanghao/.gradle/caches/transforms-3/6ff4f113bcfde2f93665c96d25be7dfe/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:23:9-81
+permission#com.gopay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:26:22-94
+uses-permission#com.gopay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.15.0] /Users/wanghao/.gradle/caches/transforms-3/b91a68de36b843905e55e9ea9d5d4ab2/transformed/core-1.15.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] /Users/wanghao/.gradle/caches/transforms-3/d230cdd384d517a3532d8d1471dda9d5/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:30:17-78
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/wanghao/.gradle/caches/transforms-3/cce7f16995c5fd6dfafe0c38a05b177d/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/wanghao/.gradle/caches/transforms-3/e0466ad6558e277109611b957d319236/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/wanghao/.gradle/caches/transforms-3/af123f9cc38d86a02fdd1a48b2bbb1c2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92

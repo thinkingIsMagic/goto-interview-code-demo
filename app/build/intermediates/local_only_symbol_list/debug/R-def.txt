@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
+dimen dimen_0_dp
+dimen dimen_150_dp
+dimen dimen_16_dp
+dimen dimen_200_dp
+dimen dimen_300_dp
+dimen dimen_8_dp
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id error_text
+id error_view
+id loader
+layout activity_main
+layout full_screen_view
+layout row_loader
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string cannot_connect_to_internet
+string something_went_wrong
+style AppTheme
+xml network_security_config
